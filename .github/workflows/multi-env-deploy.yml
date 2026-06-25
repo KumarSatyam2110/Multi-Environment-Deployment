@@ -1,0 +1,22 @@
+name: environment
+on:
+        workflow_dispatch:
+                inputs:
+                        environment:
+                                description: Select deployment environment
+                                required: true
+                                default: dev
+                                type: choice
+                                options:
+                                        - dev
+                                        - staging
+                                        - prod
+
+jobs:
+        deploy:
+                runs-on: ubuntu-latest
+                steps:
+                        - name: Print deployed env
+                          run: echo "Deployed to ${{ inputs.environment }}"
+
+
